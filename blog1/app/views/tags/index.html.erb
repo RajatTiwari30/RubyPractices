@@ -13,7 +13,7 @@
       <tr>
         <td><%= tag.name %></td>
         <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_category_path(tag) %></td>
+        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Delete', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
