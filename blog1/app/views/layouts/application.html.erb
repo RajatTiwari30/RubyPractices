@@ -18,7 +18,18 @@
             <%= yield %>
           </div>
           <div class="col-md-3">
-          <h6>CATEGORIES</h6>
+            <% if @categories %>
+            <h6>CATEGORIES</h6>
+            <%= render 'layouts/categories', categories: @categories %>
+            <% end %>
+            <% if @tags %>
+            <h6>TAGS</h6>
+            <%= render 'layouts/tags', tags: @tags %>
+            <% end %>
+            <% if @posts %>
+            <h6>POSTS</h6>
+            <%= render 'layouts/posts', posts: @posts %>
+            <% end %>
           </div>
         </div>
     </div>

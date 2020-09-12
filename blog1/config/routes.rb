@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get 'tags/index'
   resources :categories
   resources :tags

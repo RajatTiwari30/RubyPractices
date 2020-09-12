@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Tag.delete_all
+Category.delete_all
 
 Tag.create(name: "javascript")
 Tag.create(name: "react")
 Tag.create(name: "ruby")
 Tag.create(name: "rails")
+Category.create(name: "web development", description: "All about Web development")
+Category.create(name: "database", description: "All about Database")

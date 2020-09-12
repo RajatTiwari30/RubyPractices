@@ -4,7 +4,9 @@ class HomeController < ApplicationController
     end
 
     def index
-        @check = ["Check1","Check2"]
+        @categories = Category.all
+        @tags = Tag.all
+        @posts = Post.all
         #render plain: "This is an index page."
     end
     def about
