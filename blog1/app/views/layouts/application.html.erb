@@ -10,8 +10,17 @@
   </head>
 
   <body>
-  <%= render partial:"layouts/topmenu"%>
-  <p class="notice"><%= notice %></p>
-    <%= yield %>
+    <div class= "container">
+      <%= render partial:"layouts/topmenu"%>
+        <div class="row">
+          <div class= "col-md-9">
+          <p class="notice"><%= notice %></p>
+            <%= yield %>
+          </div>
+          <div class="col-md-3">
+          <h6>CATEGORIES</h6>
+          </div>
+        </div>
+    </div>
   </body>
 </html>
