@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :tags
   get 'home/read/:id', to: 'home#read', :as => :post_read
+  get 'home/:tag/posts', to: 'home#tag_search', :as => :tag_search
 
   get 'category/index'
   get 'category/show'

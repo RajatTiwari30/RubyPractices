@@ -8,9 +8,9 @@
     </div>
     <div class='card footer'>
     <h6>Published at: <%= time_ago_in_words(post.created_at) %></h6>
-    <div class= "d-flex justify-content-between align-items-center">
+    <div class= "d-flex justify-content-start">
     <% post.tags.each do |tag|%>
-    <span><%= tag.name %></span>
+    <span class="badge badge-warning mr-2"><%= link_to tag.name, tag_search_path(tag.name) %></span>
     <% end %>
     </div>
     <%= link_to "read more", post_read_path(post) %>

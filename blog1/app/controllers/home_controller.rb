@@ -9,6 +9,20 @@ class HomeController < ApplicationController
         @posts = Post.includes(:tags).order_by_latest.published
         #render plain: "This is an index page."
     end
+
+    def tag_search
+
+        if params.has_key? (:tag)
+          # @posts = Tag.find_by(:name => params[:tag]).posts
+          
+          result = Tag.where(name: params[:tag])
+          @posts = result.blank? ? [] : result.first.posts
+    
+        end
+    
+        render "home/index"
+    end
+
     def read
         @post=Post.find(params[:id])
     end
