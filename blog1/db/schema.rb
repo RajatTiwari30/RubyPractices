@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_120924) do
+ActiveRecord::Schema.define(version: 2020_09_14_110541) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2020_09_12_120924) do
     t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_taggings_on_post_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -37,4 +46,6 @@ ActiveRecord::Schema.define(version: 2020_09_12_120924) do
   end
 
   add_foreign_key "posts", "categories"
+  add_foreign_key "taggings", "posts"
+  add_foreign_key "taggings", "tags"
 end

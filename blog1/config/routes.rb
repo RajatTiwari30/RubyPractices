@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'tags/index'
   resources :categories
   resources :tags
+  get 'home/read/:id', to: 'home#read', :as => :post_read
+
   get 'category/index'
   get 'category/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

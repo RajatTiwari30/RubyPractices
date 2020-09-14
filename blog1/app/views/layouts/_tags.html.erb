@@ -1,5 +1,5 @@
 <ul>
 <% tags.each do |tag| %>
-    <li><%= tag.name %></li>
+    <li><%= tag.name %></li>(<%= tag.posts.size %>)
 <% end %>
 </ul>

@@ -4,10 +4,13 @@ class HomeController < ApplicationController
     end
 
     def index
-        @categories = Category.all
-        @tags = Tag.all
-        @posts = Post.all
+        @categories = Category.all.includes(:posts)
+        @tags = Tag.includes(:posts)
+        @posts = Post.includes(:tags).order_by_latest.published
         #render plain: "This is an index page."
+    end
+    def read
+        @post=Post.find(params[:id])
     end
     def about
         #render plain:"This is a about page"
