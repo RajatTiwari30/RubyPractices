@@ -23,6 +23,16 @@ class HomeController < ApplicationController
         render "home/index"
     end
 
+    def category_search_post
+
+        if params.has_key? (:category)
+        @posts = Category.find_by(:name=> params[:category]).posts
+    
+        end
+    
+        render "home/index"
+    end
+
     def read
         @post=Post.find(params[:id])
     end
