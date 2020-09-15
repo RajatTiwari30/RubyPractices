@@ -6,11 +6,12 @@
     <div class= "d-flex justify-content-between">
     <span class="badge badge-light"><%= link_to post.category.name, category_search_post_path(post.category.slug) %></span>
     </div>
-        <div><%= post.Body %>
+        <div><%= post.Body.to_plain_text[0..200] %>
         </div>
     </div>
     <div class='card footer'>
     <h6>Published: <%= time_ago_in_words(post.created_at) %> ago.</h6>
+    <h6>Author: <%= post.user.email %></h6>
     <div class= "d-flex justify-content-start">
     <% post.tags.each do |tag|%>
     <span class="badge badge-warning mr-2"><%= link_to tag.name, tag_search_path(tag.name) %></span>

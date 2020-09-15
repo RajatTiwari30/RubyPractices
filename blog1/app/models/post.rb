@@ -1,12 +1,13 @@
 class Post < ApplicationRecord
     belongs_to :category
-    has_many :taggings
+    belongs_to :user
+    has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
     default_scope {order :created_at}
     scope :published, -> { where(published:true) }
     scope :unpublished, -> { where.not(published:true) }
     scope :order_by_latest, -> { reorder(created_at: :desc) }
-
+    has_rich_text :Body
     def all_tags=(tag_names)
         if tag_names.blank?
             return
