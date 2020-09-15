@@ -26,7 +26,7 @@ class HomeController < ApplicationController
     def category_search_post
 
         if params.has_key? (:category)
-        @posts = Category.find_by(:name=> params[:category]).posts
+        @posts = Category.find_by(:slug=> params[:category]).posts
     
         end
     

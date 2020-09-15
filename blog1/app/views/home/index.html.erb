@@ -4,7 +4,7 @@
     <div class='card body'>
     <h4><%= post.Title %></h4>
     <div class= "d-flex justify-content-between">
-    <span class="badge badge-light"><%= link_to post.category.name, category_search_post_path(post.category.name) %></span>
+    <span class="badge badge-light"><%= link_to post.category.name, category_search_post_path(post.category.slug) %></span>
     </div>
         <div><%= post.Body %>
         </div>

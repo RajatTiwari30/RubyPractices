@@ -1,5 +1,5 @@
 <ul>
 <% categories.each do |category| %>
-    <li><%= link_to_if category.posts.size>0, category.name, category_search_post_path(category.name) %></li> (<%= category.posts.size %>)
+    <li><%= link_to_if category.posts.size>0, category.name, category_search_post_path(category.slug) %></li> (<%= category.posts.size %>)
 <% end %>
 </ul>
