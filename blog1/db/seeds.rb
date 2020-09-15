@@ -10,10 +10,10 @@ Tag.delete_all
 Post.delete_all
 Category.delete_all
 
-Tag.create(name: "javascript")
-Tag.create(name: "react")
-Tag.create(name: "ruby")
-Tag.create(name: "rails")
+tag_js=Tag.create(name: "javascript")
+tag_react=Tag.create(name: "react")
+tag_ruby=Tag.create(name: "ruby")
+tag_rails=Tag.create(name: "rails")
 cat_wd=Category.create(name:"web development", description:"All about Web development", published:true)
 cat_db=Category.create(name:"database", description:"All about Database", published:true)
 
@@ -22,6 +22,7 @@ cat_db=Category.create(name:"database", description:"All about Database", publis
         Title: "Post #{i}",
         Body: "Body #{i}",
         Published:true,
+        tags: i%2==0? [tag_js,tag_ruby] : [tag_react,tag_rails],
         category_id: i%2==0? cat_wd.id : cat_db.id
     )
 end
