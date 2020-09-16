@@ -6,7 +6,8 @@ class HomeController < ApplicationController
     def index
         @categories = Category.all.includes(:posts)
         @tags = Tag.includes(:posts)
-        @posts = Post.includes(:tags).order_by_latest.published.page(params[:page]).per(5)
+        @q=Post.ransack(params[:q])
+        @posts = @q.result().includes(:tags).order_by_latest.published.page(params[:page]).per(5)
         #render plain: "This is an index page."
     end
 

@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :destroy, :edit, :update]
   #before_action 
   def index
-    @tags=Tag.all
+    @tags=Tag.all.page(params[:page]).per(5)
   end
   def show
     @tag=Tag.find(params[:id])

@@ -4,15 +4,15 @@
 <%= link_to 'New Post', new_post_path, class: "btn btn-success" %>
 <div class="card-columns">
 <%= search_form_for @q do |f|%>
-<%= f.search_field :Title_cont, placeholder: "title"%>
+<%= f.search_field :Title_or_user_email_or_tags_name_or_category_name_cont, placeholder: "by title, email, tag & category"%>
 <%= f.submit%>
 <%end%>
 </div>
 <table class= "table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Category</th>
+      <th><%= sort_link(@q, :Title) %></th>
+      <th><%= sort_link(@q, :Category) %></th>
       <th>Author</th>
       <th>Published</th>
       <th colspan="3"></th>
