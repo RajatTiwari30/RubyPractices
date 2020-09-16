@@ -17,7 +17,8 @@ class HomeController < ApplicationController
         # todo 
         q = params[:q]
     
-        @posts = Post.where('title LIKE ?', "%#{q}%").page(params[:page]).per(5) 
+        @posts = Post.includes(:tags).where('title LIKE ? OR tags.name LIKE ?', "%#{q}%", "%#{q}%").references(:tags).page(params[:page]).per(5)
+      #  @posts = Post.includes(:tags).where('tags.name LIKE ?', "%#{q}%").references(:tags).page(params[:page]).per(5) 
            # % for contains search
     
         render "home/index"
