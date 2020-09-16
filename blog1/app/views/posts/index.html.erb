@@ -1,6 +1,13 @@
 
 <h1>Posts</h1>
+
 <%= link_to 'New Post', new_post_path, class: "btn btn-success" %>
+<div class="card-columns">
+<%= search_form_for @q do |f|%>
+<%= f.search_field :Title_cont, placeholder: "title"%>
+<%= f.submit%>
+<%end%>
+</div>
 <table class= "table table-striped">
   <thead>
     <tr>
