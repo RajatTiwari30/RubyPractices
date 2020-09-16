@@ -1,9 +1,9 @@
 <h1>Welcome to Rails Blog</h1>
 <div class="card-columns">
-<%= search_form_for @q do |f|%>
-<%= f.search_field :Title_cont, placeholder: "by title"%>
-<%= f.submit%>
-<%end%>
+<%= form_with url: post_search_path, method: :get, local: true do |f| %>
+  <%= text_field_tag(:q, params[:q], placeholder: "search posts") %>
+  <%= f.submit "Search" %>
+<% end %>
 </div>
 <% @posts.each do |post| %>
 <div class='card mb-3'>

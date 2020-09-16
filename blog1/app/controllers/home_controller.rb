@@ -6,9 +6,22 @@ class HomeController < ApplicationController
     def index
         @categories = Category.all.includes(:posts)
         @tags = Tag.includes(:posts)
-        @q=Post.ransack(params[:q])
-        @posts = @q.result().includes(:tags).order_by_latest.published.page(params[:page]).per(5)
+        @posts = Post
+        .includes(:tags)
+        .published.order_by_latest
+        .page(params[:page]).per(5)
         #render plain: "This is an index page."
+    end
+
+    def search 
+        # todo 
+        q = params[:q]
+    
+        @posts = Post.where('title LIKE ?', "%#{q}%").page(params[:page]).per(5) 
+           # % for contains search
+    
+        render "home/index"
+    
     end
 
     def tag_search
