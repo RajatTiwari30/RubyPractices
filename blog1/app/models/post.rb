@@ -8,11 +8,14 @@ class Post < ApplicationRecord
     scope :unpublished, -> { where.not(published:true) }
     scope :order_by_latest, -> { reorder(created_at: :desc) }
     has_rich_text :Body
-    def all_tags=(tag_names)
-        if tag_names.blank?
+    attr_accessor :all_tags
+    after_save :assign_tags
+
+    def assign_tags
+        if all_tags.blank?
             return
         end
-        self.tags=tag_names.split(",").map do |tag_name|
+        self.tags=@all_tags.split(",").map do |tag_name|
             unless tag_name.blank?
                 Tag.where(name: tag_name.strip).first_or_create!
             end

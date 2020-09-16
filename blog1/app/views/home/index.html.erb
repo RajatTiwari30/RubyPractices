@@ -6,7 +6,7 @@
     <div class= "d-flex justify-content-between">
     <span class="badge badge-light"><%= link_to post.category.name, category_search_post_path(post.category.slug) %></span>
     </div>
-        <div><%= post.Body.to_plain_text[0..200] %>
+        <div><%= post.Body %>
         </div>
     </div>
     <div class='card footer'>
@@ -20,4 +20,7 @@
     <%= link_to "read more", post_read_path(post) %>
     </div>
 </div>
+
 <% end %>
+<%= paginate @posts%>
+
