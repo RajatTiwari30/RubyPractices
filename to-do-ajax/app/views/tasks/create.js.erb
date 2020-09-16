@@ -1,0 +1,10 @@
+alert("Hello from JavaScript..")
+
+document.querySelector("#task_items")
+         .insertAdjacentHTML("afterbegin",
+         "<%= j render "task", task:@task %>"
+);
+document.querySelector("#task_title").value="";
+document.querySelector("#task_position").value="<%=Task.all.size+1%>";
+
+toastr.success("Task Added")

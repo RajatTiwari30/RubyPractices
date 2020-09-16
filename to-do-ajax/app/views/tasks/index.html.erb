@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasks</h1>
+<div class="task-form">
+<%= render 'form', task:@task %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Completed</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="task_items">
+    <% @tasks.each do |task| %>
+      <tr>
+        <%= render partial:task %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
