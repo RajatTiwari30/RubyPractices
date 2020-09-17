@@ -16,9 +16,7 @@
 
   <tbody id="task_items">
     <% @tasks.each do |task| %>
-      <tr>
         <%= render partial:task %>
-      </tr>
     <% end %>
   </tbody>
 </table>
