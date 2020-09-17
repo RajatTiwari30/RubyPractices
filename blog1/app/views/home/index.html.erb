@@ -17,7 +17,7 @@
     </div>
     <div class='card footer'>
     <h6>Published: <%= time_ago_in_words(post.created_at) %> ago.</h6>
-    <h6>Author: <%= post.user.email %></h6>
+    <h6>Author: <%= post.user.username %></h6>
     <div class= "d-flex justify-content-start">
     <% post.tags.each do |tag|%>
     <span class="badge badge-warning mr-2"><%= link_to tag.name, tag_search_path(tag.name) %></span>

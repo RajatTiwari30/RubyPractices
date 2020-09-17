@@ -33,11 +33,13 @@ cat_db=Category.create(name:"database", description:"All about Database", publis
 
 abcd = User.create(
     email: "abcd@abcd.com",
+    username: "abcd",
     password: "1234567",
     password_confirmation: "1234567"
 )
 admin = User.create(
     email: "admin@admin.com",
+    username: "admin",
     password: "1234567",
     password_confirmation: "1234567"
 )
