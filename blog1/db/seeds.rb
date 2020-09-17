@@ -5,11 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+puts "Deleting tables..."
+
+connection = ActiveRecord::Base.connection()
+connection.execute("delete from action_text_rich_texts");
+connection.execute("delete from active_storage_attachments");
+connection.execute("delete from active_storage_blobs");
+# connection.execute("delete from friendly_id_slugs");
+connection.close()
+
 Tagging.delete_all
+Comment.delete_all
 User.delete_all
 Tag.delete_all
 Post.delete_all
 Category.delete_all
+
 
 tag_js=Tag.create(name: "javascript")
 tag_react=Tag.create(name: "react")
@@ -38,4 +51,15 @@ admin = User.create(
         tags: i%2==0? [tag_js,tag_ruby] : [tag_react,tag_rails],
         category_id: i%2==0? cat_wd.id : cat_db.id
     )
+end
+
+Post.all.each do |post|
+    3.times do |i|
+    post.comments.build(
+        title: Faker::ChuckNorris.fact,
+        content: Faker::ChuckNorris.fact,
+        user: i%2 ==0? admin : abcd
+    )
+    post.save
+    end
 end

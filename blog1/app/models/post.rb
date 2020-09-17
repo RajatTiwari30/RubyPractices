@@ -3,6 +3,10 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
+    has_many :comments
+
+
+
     default_scope {order :created_at}
     scope :published, -> { where(published:true) }
     scope :unpublished, -> { where.not(published:true) }
@@ -12,7 +16,7 @@ class Post < ApplicationRecord
     after_save :assign_tags
 
     def assign_tags
-        if all_tags.blank?
+        if @all_tags.blank?
             return
         end
         self.tags=@all_tags.split(",").map do |tag_name|
