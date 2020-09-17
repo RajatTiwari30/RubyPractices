@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  post "home/comments/:post_id", to: "home#comments", as: :comments
   resources :posts
   get 'tags/index'
   resources :categories
